@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | ZURAX LITMATCH</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #0a0014, #000);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .checkout-box {
+      background: rgba(20, 20, 30, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(160, 100, 255, 0.6);
+      padding: 30px 40px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      border: 1px solid #7f00ff;
+    }
+
+    .checkout-box img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid #a06cff;
+      box-shadow: 0 0 20px #8a2be2;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      color: #a06cff;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      color: #00ffa6;
+      font-size: 1.3rem;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+
+    p.desc {
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      margin: 10px 0;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-buy {
+      background: linear-gradient(90deg, #7f00ff, #e100ff);
+      color: #fff;
+      box-shadow: 0 0 15px rgba(160, 100, 255, 0.4);
+    }
+
+    .btn-buy:hover {
+      background: linear-gradient(90deg, #00ffa6, #00c8ff);
+      color: #000;
+      box-shadow: 0 0 25px rgba(0,255,180,0.7);
+    }
+
+    .btn-back {
+      background: #111;
+      color: #aaa;
+      border: 1px solid #444;
+    }
+
+    .btn-back:hover {
+      background: #222;
+      color: #fff;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      text-align: center;
+      width: 100%;
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    footer span {
+      color: #a06cff;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="checkout-box">
+    <img src="https://iili.io/K4nAz6x.md.jpg" alt="Zurax Logo">
+    <h1 id="appTitle">Memuat...</h1>
+    <div class="price" id="appPrice">-</div>
+    <p class="desc">Pastikan kamu ingin membeli APK ini. Setelah pembayaran dikonfirmasi, file akan otomatis dikirim melalui sistem ZURAX LITMATCH.</p>
+
+    <button class="btn btn-buy" onclick="bayarSekarang()">💎 Bayar Sekarang</button>
+    <button class="btn btn-back" onclick="window.location.href='index.html'">⬅ Kembali ke Store</button>
+  </div>
+
+  <footer>
+    &copy; 2025 <span>ZURAX LITMATCH</span> | Sistem Checkout Aman & Terenkripsi.
+  </footer>
+
+  <script>
+    // Daftar APK dari halaman utama (harus sama ID-nya)
+    const apps = {
+      a1: { title: "APK BUG AVATAR PREMIUM", price: 250000 },
+      a2: { title: "APK ROOM LITMATCH PRO", price: 150000 },
+      a3: { title: "APK PETI 0 DETIK V2", price: 120000 },
+      a4: { title: "BUG AVATAR", price: 50000 }
+    };
+
+    // Ambil ID dari URL (?id=a1)
+    const urlParams = new URLSearchParams(window.location.search);
+    const appId = urlParams.get("id");
+
+    // Tampilkan detail sesuai APK yang diklik
+    if (appId && apps[appId]) {
+      document.getElementById("appTitle").innerText = apps[appId].title;
+      document.getElementById("appPrice").innerText = "Rp " + apps[appId].price.toLocaleString('id-ID');
+    } else {
+      document.getElementById("appTitle").innerText = "Produk Tidak Ditemukan";
+      document.getElementById("appPrice").innerText = "-";
+    }
+
+    function bayarSekarang() {
+      alert("✅ Pembayaran Berhasil!\nTerima kasih telah membeli di ZURAX LITMATCH.");
+      window.location.href = "index.html";
+    }
+  </script>
+
+</body>
+</html>

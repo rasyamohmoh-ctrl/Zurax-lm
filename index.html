@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZURAX LITMATCH | Toko APK Premium</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #0e0e10, #000);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 30px 20px;
+      background: rgba(15, 15, 20, 0.9);
+      border-bottom: 2px solid #7f00ff;
+      box-shadow: 0 0 20px #7f00ff;
+    }
+
+    header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid #7f00ff;
+      box-shadow: 0 0 25px #a000ff;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #a06cff;
+      text-shadow: 0 0 20px #8a2be2;
+    }
+
+    p.sub {
+      max-width: 600px;
+      margin: 10px auto 0;
+      color: #d0d0d0;
+      font-size: 0.95rem;
+    }
+
+    .app-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .app-card {
+      background: rgba(32, 32, 40, 0.95);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(160, 100, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .app-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px rgba(160, 100, 255, 0.6);
+    }
+
+    .app-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .app-info {
+      padding: 15px;
+    }
+
+    .app-info h2 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #a06cff;
+    }
+
+    .app-info p {
+      font-size: 0.9rem;
+      color: #ccc;
+      margin: 8px 0;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #00ffa6;
+      margin-top: 10px;
+    }
+
+    .btn-buy {
+      display: inline-block;
+      background: linear-gradient(90deg, #9c0594, #e100ff);
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(160, 100, 255, 0.4);
+    }
+
+    .btn-buy:hover {
+      background: linear-gradient(90deg, #00ffa6, #00c8ff);
+      color: #000;
+      box-shadow: 0 0 20px rgba(0,255,180,0.8);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #0f0f12;
+      color: #777;
+      border-top: 1px solid #7f00ff;
+      font-size: 0.9rem;
+    }
+
+    footer span {
+      color: #a06cff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="https://freeimage.host/i/K4nAz6x"><img src="https://iili.io/K4nAz6x.md.jpg" alt="K4nAz6x.md.jpg" border="0"></a>
+    <h1>ZURAX LITMATCH STORE</h1>
+    <p class="sub">Selamat datang di <b>Zurax Litmatch</b> — pusat penjualan APK mood litmatch dengan fitur langka dan harga bersahabat.  
+    Kami menghadirkan APK mod premium dengan performa stabil, aman, dan 100% tested oleh tim developer kami.</p>
+  </header>
+
+  <main class="app-list" id="appList"></main>
+
+  <footer>
+    &copy; 2025 <span>ZURAX LITMATCH</span> | Semua hak dilindungi.
+  </footer>
+
+  <script>
+    const initialApps = [
+      { 
+        id: 'a1',
+        title: 'APK BUG AVATAR PREMIUM',
+        price: 250000,
+        cat: 'game',
+        img: 'https://picsum.photos/seed/a1/800/600',
+        desc: 'APK bug avatar versi terbaru — 6.66,1.'
+      },
+      { 
+        id: 'a2',
+        title: 'APK ROOM LITMATCH PRO',
+        price: 150000,
+        cat: 'tools',
+        img: 'https://picsum.photos/seed/a4/800/600',
+        desc: 'APK bug room versi terbaru — 6.70,1.'
+      },
+      { 
+        id: 'a3',
+        title: 'APK PETI 0 DETIK',
+        price: 120000,
+        cat: 'tools',
+        img: 'https://picsum.photos/seed/a1/800/600',
+        desc: 'APK bug peti versi terbaru — 6.68,0.'
+      },
+      { 
+        id: 'a4',
+        title: 'BUG AVATAR',
+        price: 50000,
+        cat: 'utility',
+        img: 'https://picsum.photos/seed/a4/800/600',
+        desc: 'Bug avatar kren.'
+      }
+    ];
+
+    const appList = document.getElementById('appList');
+
+    function formatRupiah(amount) {
+      return amount === 0 ? 'Gratis' : 'Rp ' + amount.toLocaleString('id-ID');
+    }
+
+    initialApps.forEach(app => {
+      const card = document.createElement('div');
+      card.className = 'app-card';
+      card.innerHTML = `
+        <img src="${app.img}" alt="${app.title}">
+        <div class="app-info">
+          <h2>${app.title}</h2>
+          <p>${app.desc}</p>
+          <div class="price">${formatRupiah(app.price)}</div>
+          <a href="checkout.html?id=${app.id}" class="btn-buy">${app.price === 0 ? 'Unduh Gratis' : 'Beli Sekarang'}</a>
+        </div>`;
+      appList.appendChild(card);
+    });
+  </script>
+</body>
+</html>
